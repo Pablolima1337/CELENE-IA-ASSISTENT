@@ -1,0 +1,4 @@
+colorama
+ollama
+requests
+flask

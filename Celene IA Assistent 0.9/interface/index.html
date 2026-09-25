@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+    <title>CELENE // AI TERMINAL</title>
+  </head>
+
+  <body>
+    <div class="crt-overlay"></div>
+    <div class="scanline"></div>
+
+    <main class="terminal-shell">
+      <header class="terminal-header">
+        <div class="header-line">
+          <span> SYS://CELENE_AI_INTERFACE </span>
+          <span> VER 0.5 </span>
+          <span id="systemClock"> 00:00:00 </span>
+        </div>
+
+        <div class="ascii-logo">
+          <pre>
+ ██████╗███████╗██╗     ███████╗███╗   ██╗███████╗
+██╔════╝██╔════╝██║     ██╔════╝████╗  ██║██╔════╝
+██║     █████╗  ██║     █████╗  ██╔██╗ ██║█████╗
+██║     ██╔══╝  ██║     ██╔══╝  ██║╚██╗██║██╔══╝
+╚██████╗███████╗███████╗███████╗██║ ╚████║███████╗
+ ╚═════╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝
+          </pre>
+        </div>
+
+        <div class="header-subtitle">[ ARTIFICIAL INTELLIGENCE ASSISTANT ]</div>
+
+        <div class="system-info">
+          <span> CONNECTION: LOCALHOST </span>
+          <span> MODEL: CELENE </span>
+          <span class="online"> STATUS: ONLINE </span>
+        </div>
+      </header>
+
+      <section class="dashboard-grid">
+        <aside class="panel system-panel">
+          <div class="system-monitor-title">┌────────────── SYSTEM MONITOR ──────────────┐</div>
+
+          <div class="system-monitor-content">
+            <div class="system-metric">
+              <div class="system-metric-header">
+                <span>CPU</span>
+                <span id="cpuValue">--%</span>
+              </div>
+              <div class="ascii-progress" id="cpuBar">[----------]</div>
+              <div class="system-metric-info" id="cpuInfo">WAITING FOR SIGNAL...</div>
+            </div>
+
+            <div class="system-metric">
+              <div class="system-metric-header">
+                <span>GPU</span>
+                <span id="gpuValue">--%</span>
+              </div>
+              <div class="ascii-progress" id="gpuBar">[----------]</div>
+              <div class="system-metric-info" id="gpuInfo">WAITING FOR SIGNAL...</div>
+            </div>
+
+            <div class="system-metric">
+              <div class="system-metric-header">
+                <span>RAM</span>
+                <span id="ramValue">--%</span>
+              </div>
+
+              <div class="ascii-progress" id="ramBar">[----------]</div>
+              <div class="system-metric-info" id="ramInfo">WAITING FOR SIGNAL...</div>
+            </div>
+            <div class="system-divider">├──────────── STORAGE ────────────┤</div>
+            <div class="disk-monitor" id="diskMonitor"></div>
+            <div class="system-divider">├──────────── RUNTIME ────────────┤</div>
+            <div class="system-uptime">
+              <span> UPTIME </span>
+              <strong id="uptimeValue"> --d --h --m </strong>
+            </div>
+            <div class="system-signal">
+              <span class="system-signal-dot"></span>
+              <span> LIVE TELEMETRY </span>
+              <span class="system-signal-line"> :::::::::::::: </span>
+            </div>
+          </div>
+
+          <div class="system-monitor-footer">└───────────────────────────────────────────┘</div>
+        </aside>
+
+        <section class="panel chat-panel">
+          <div class="panel-title">&lt;&lt;&lt;&lt;&lt; ACTIVE CONVERSATION &gt;&gt;&gt;&gt;&gt;</div>
+
+          <div class="messages" id="messages">
+            <div class="welcome-terminal">
+              <p>CELENE&gt; Sistema inicializado.</p>
+              <p>CELENE&gt; Interface neural disponível.</p>
+              <p>CELENE&gt; Aguardando entrada do usuário...</p>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel quick-panel">
+          <h3>[ QUICK ACCESS ]</h3>
+          <button class="terminal-option" id="newChat">01 // NOVA CONVERSA</button>
+          <button class="terminal-option">02 // HISTÓRICO</button>
+          <button class="terminal-option">03 // SISTEMA</button>
+          <button class="terminal-option">04 // FERRAMENTAS</button>
+          <button class="terminal-option">05 // MEMÓRIA</button>
+          <button class="terminal-option">06 // DIAGNÓSTICO</button>
+        </aside>
+      </section>
+
+      <section class="lower-grid">
+        <div class="panel activity-panel">
+          <h3>[ RECENT ACTIVITY ]</h3>
+          <div id="activityLog">
+            <p>00:00 // SYSTEM BOOT</p>
+            <p>00:00 // CORE READY</p>
+            <p>00:00 // WAITING INPUT</p>
+          </div>
+        </div>
+
+        <div class="panel station-panel">
+          <h3>[ STATION MESSAGE ]</h3>
+          <blockquote>"No system is truly idle. Something is always waiting for the next command."</blockquote>
+          <span> — CELENE CORE DIRECTIVE </span>
+        </div>
+      </section>
+
+      <footer class="terminal-input-area">
+        <div class="input-title">&lt;&lt;&lt;&lt;&lt; INPUT TERMINAL &gt;&gt;&gt;&gt;&gt;</div>
+        <form class="terminal-form" id="messageForm">
+          <span class="prompt"> USER&gt; </span>
+          <textarea id="messageInput" rows="1" placeholder="Digite um comando..."></textarea>
+          <button id="voiceButton" type="button" title="Falar com a Celene">MIC</button>
+          <button id="sendButton" type="submit">EXEC</button>
+        </form>
+
+        <div class="input-footer">
+          <span> [ ENTER = SEND ] </span>
+          <span> [ SHIFT+ENTER = NEW LINE ] </span>
+          <span> MODE: COMMAND </span>
+        </div>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+
+    <script>
+      function updateClock() {
+        const now = new Date();
+        const clock = document.getElementById("systemClock");
+        clock.textContent = now.toLocaleTimeString("pt-BR");
+      }
+
+      updateClock();
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
+</html>
